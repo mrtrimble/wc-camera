@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon"
+        type="image/svg+xml"
+        href="/vite.svg" />
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0" />
+  <title>Vite + TS</title>
+
+  <style>
+    video {
+      display: block;
+      width: 250px;
+    }
+
+    img {
+      display: block;
+      width: 250px;
+    }
+  </style>
+</head>
+
+<body>
+  <web-camera>
+    <video autoplay
+           muted></video>
+    <canvas hidden></canvas>
+    <img hidden>
+    <button type="button">
+      Take Photo
+    </button>
+  </web-camera>
+  
+  <script type="module"
+          src="/src/WebCamera.ts"></script>
+
+  <script>
+    const webCam = document.querySelector('web-camera');
+
+    // Listen for the custom event `captureImage` to receive the image file details
+    webCam.addEventListener('captureImage', (event) => {
+      console.log(event.detail);
+    });
+  </script>
+</body>
+
+</html>
